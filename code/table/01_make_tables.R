@@ -2,7 +2,7 @@ here::i_am(
   "code/table/01_make_tables.R"
 )
 
-data <- readRDS(
+cdc_data2021 <- readRDS(
   file = here::here("data/cdc_data2021.rds")
 )
 
@@ -47,7 +47,7 @@ saveRDS(
 # Step 1: Create a county-level summary.
 # For each county (unique county_names and corresponding state in wwtp_jurisdiction),
 # extract the unique population_served and the median of other variables.
-county_summary <- cdc_data %>%
+county_summary <- cdc_data2021 %>%
   group_by(county_names, wwtp_jurisdiction) %>%
   summarize(
     # Since population_served is unique for each county, take the first value.
